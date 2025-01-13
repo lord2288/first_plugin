@@ -1,0 +1,9 @@
+name: projektB
+version: '1.0-SNAPSHOT'
+main: org.conterBlox.projektB.ProjektB
+api-version: '1.21'
+
+commands:
+  lightbolt:
+    description: вызывает молнию
+    usage: /<command>
