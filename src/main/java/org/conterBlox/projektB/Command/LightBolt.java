@@ -14,24 +14,15 @@ import org.bukkit.Particle;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class LightBolt implements CommandExecutor {
+public class LightBolt implements CommandExecutor  {
 
-    private final Map<UUID, Long> cooldowns = new HashMap<>();
-
-    private static final long COOLDOWN_TIME = 5 * 1000;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+
         // Проверяем, что отправитель команды - это игрок
         if (!(sender instanceof Player)) return true;
         Player player = (Player) sender; // Приводим sender к Player
-
-
-        if (!isCooldown(player, COOLDOWN_TIME)) {
-            player.sendMessage("Эту команду можно выполнять 1 раз за " + COOLDOWN_TIME / 1000 + " секунд");
-            return true;
-        }
-        setCooldown(player);
 
 
         // Проверяем, что команда называется "lightbolt"
@@ -60,22 +51,6 @@ public class LightBolt implements CommandExecutor {
             }
         }
         return true;
-    }
-
-    private boolean isCooldown(Player player, long cooldown) {
-        final Long startTime = cooldowns.get(player.getUniqueId());
-        if (startTime == null) {
-            return true;
-        }
-        final long elapsedTime = System.currentTimeMillis() - startTime;
-        return elapsedTime >= cooldown;
-    }
-
-    private void setCooldown(Player player) {
-        final long currentTime = System.currentTimeMillis();
-        cooldowns.merge(player.getUniqueId(), currentTime,
-                (oldValue, newValue) -> newValue
-        );
     }
 
 
@@ -111,5 +86,4 @@ public class LightBolt implements CommandExecutor {
             }
         }.runTaskTimer(ProjektB.getInstance(), 0, 1); // Запускаем задачу с интервалом 1 тик
     }
-
 }

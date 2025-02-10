@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.conterBlox.projektB.Command.LightBolt;
-import org.conterBlox.projektB.Command.bullet1;
+import org.conterBlox.projektB.Command.Bullet1;
 import org.conterBlox.projektB.hendler.EnderChestInteractHandler;
 import org.conterBlox.projektB.hendler.InventoryCloseHandler;
 import org.conterBlox.projektB.hendler.SimpleEventHendler;
@@ -22,8 +22,8 @@ public final class ProjektB extends JavaPlugin {
 
         // Регистрация существующих обработчиков и команд
         getServer().getPluginManager().registerEvents(new SimpleEventHendler(), this);
-        getServer().getPluginCommand("lightbolt").setExecutor(new LightBolt());
-//        getServer().getPluginCommand("bullet1").setExecutor( new bullet1());
+        getCommand("lightbolt").setExecutor(new LightBolt());
+        getCommand("bullet1").setExecutor(new Bullet1());
 
         // Создаем общий инвентарь
         sharedEnderChest = Bukkit.createInventory(null, 27, ChatColor.DARK_PURPLE + "Shared Ender Chest");

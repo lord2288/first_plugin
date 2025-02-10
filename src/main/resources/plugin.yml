@@ -4,6 +4,9 @@ main: org.conterBlox.projektB.ProjektB
 api-version: '1.21'
 
 commands:
-  lightbolt:
-    description: вызывает молнию
-    usage: /<command>
+  bullet1:
+    description: Custom bullet effect.
+    usage: /bullet1
+  LightBolt:
+    description: Custom bullet effect.
+    usage: /lightbolt
